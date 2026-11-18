@@ -21,6 +21,18 @@ TEST(PasswordTest, single_letter_password)
 	ASSERT_EQ(1, actual);
 }
 
+TEST(PasswordTest, repeated_leading_characters)
+{
+	Password my_password;
+	ASSERT_EQ(3, my_password.count_leading_characters("ZZZyxz"));
+}
+
+TEST(PasswordTest, stop_when_different_character)
+{
+	Password my_password;
+	ASSERT_EQ(2, my_password.count_leading_characters("ZZYYY"));
+}
+
 TEST(PasswordTest, mixed_case_returns_true)
 {
 	Password my_password;
