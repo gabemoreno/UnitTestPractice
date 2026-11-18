@@ -21,9 +21,26 @@ TEST(PasswordTest, single_letter_password)
 	ASSERT_EQ(1, actual);
 }
 
-TEST(PasswordTest, has_mixed_case)
+TEST(PasswordTest, mixed_case_returns_true)
 {
 	Password my_password;
-	bool actual = mypassword.has_mixed_case("aA");
-	ASSERT_EQ(true, actual);
+	ASSERT_TRUE(my_password.has_mixed_case("Test"));
+}
+
+TEST(PasswordTest, all_lowercase_returns_false)
+{
+	Password my_password;
+	ASSERT_FALSE(my_password.has_mixed_case("test"));
+}
+
+TEST(PasswordTest, all_uppercase_returns_false)
+{
+	Password my_password;
+	ASSERT_FALSE(my_password.has_mixed_case("TEST"));
+}
+
+TEST(PasswordTest, numbers_ignored)
+{
+	Password my_password;
+	ASSERT_FALSE(my_password.has_mixed_case("123"));
 }

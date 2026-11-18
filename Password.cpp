@@ -30,11 +30,14 @@ bool Password::has_mixed_case(string pass){
   for (unsigned char c : pass) {
     if (std::isupper(c)) {
       upper = true;
-    }
-    if (std::islower(c)) {
+    } else if (std::islower(c)) {
       lower = true;
+    }
+
+    if (upper && lower) {
+      return true;
     }
   }
 
-  return upper && lower;
+  return false;
 }
